@@ -43,6 +43,8 @@ app.post("/data", async (req, res) => {
 // ✅ Gunakan port dari Railway (harus pakai process.env.PORT)
 const PORT = process.env.PORT || 8080;
 
+app.get("/health", (req, res) => res.send("OK"));
+
 // ✅ Pastikan bind ke semua interface
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
