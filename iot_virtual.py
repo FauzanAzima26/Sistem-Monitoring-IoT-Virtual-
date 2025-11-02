@@ -1,6 +1,6 @@
 import requests, random, json, time
 
-API_URL = "https://sistem-monitoring-iot-virtual-production.up.railway.app"
+API_URL = "https://sistem-monitoring-iot-virtual-production.up.railway.app/data"
 AUTH_TOKEN = "PPKOrmawa.12"
 
 while True:
