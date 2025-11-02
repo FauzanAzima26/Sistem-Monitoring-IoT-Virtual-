@@ -40,11 +40,11 @@ app.post("/data", async (req, res) => {
   }
 });
 
-// ✅ Gunakan port dari Railway
+// ✅ Gunakan port dari Railway (harus pakai process.env.PORT)
 const PORT = process.env.PORT || 8080;
 
-// Jalankan server dan pastikan bind ke semua interface
-app.listen(PORT, "0.0.0.0", () => {
+// ✅ Pastikan bind ke semua interface
+app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log("SUPABASE_URL =", SUPABASE_URL);
   console.log("AUTH_TOKEN =", AUTH_TOKEN ? "✅ Loaded" : "❌ Missing");
