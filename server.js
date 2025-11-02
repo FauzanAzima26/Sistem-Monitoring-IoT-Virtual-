@@ -9,7 +9,10 @@ app.use(express.json());
 
 const { SUPABASE_URL, SUPABASE_KEY, AUTH_TOKEN } = process.env;
 
-// Endpoint untuk menerima data sensor
+// ✅ Endpoint utama
+app.get("/", (req, res) => res.send("🚀 IoT Cloud API Running on Railway"));
+
+// ✅ Endpoint untuk menerima data sensor
 app.post("/data", async (req, res) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (token !== AUTH_TOKEN) return res.status(403).send("Unauthorized");
@@ -30,12 +33,13 @@ app.post("/data", async (req, res) => {
         },
       }
     );
-    res.send("Data stored successfully");
+    res.send("✅ Data stored successfully in Supabase");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Database error");
   }
 });
 
-app.get("/", (req, res) => res.send("IoT Cloud API Running"));
-app.listen(10000, () => console.log("Server running on port 10000"));
+// ✅ Gunakan port dari Railway
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
